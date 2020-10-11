@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::group(['namespace' => 'App\Http\Controllers'],
     function (){
-        Route::get('categorys', 'CategoryController@getAll');
+        Route::get('categorys', 'CategoryController@getAll')->middleware(['auth:api','role:ROLE_SUPERADMIN']);
         Route::get('search_category', 'CategoryController@findCategory');
         Route::get('blogs','BlogController@getAll');
         Route::get('findBlog','BlogController@findBlogByCategory');
